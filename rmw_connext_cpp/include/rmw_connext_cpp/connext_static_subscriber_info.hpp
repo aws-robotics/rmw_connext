@@ -18,14 +18,22 @@
 #include <atomic>
 
 #include "rmw_connext_shared_cpp/ndds_include.hpp"
+#include "rmw_connext_shared_cpp/types.hpp"
+
+#include "ndds/ndds_cpp.h"
+#include "ndds/ndds_namespace_cpp.h"
 
 #include "rosidl_typesupport_connext_cpp/message_type_support.h"
+#include "rmw_connext_shared_cpp/connext_static_event_info.hpp"
+#include "rmw/types.h"
+#include "rmw/ret_types.h"
+
 
 class ConnextSubscriberListener;
 
 extern "C"
 {
-struct ConnextStaticSubscriberInfo
+struct ConnextStaticSubscriberInfo : ConnextCustomEventInfo
 {
   DDS::Subscriber * dds_subscriber_;
   ConnextSubscriberListener * listener_;
@@ -33,6 +41,17 @@ struct ConnextStaticSubscriberInfo
   DDS::ReadCondition * read_condition_;
   bool ignore_local_publications;
   const message_type_support_callbacks_t * callbacks_;
+  /// Remap the specific RTI Connext DDS DataReader Status to a generic RMW status type.
+  /**
+   * @param mask input status mask
+   * @param event
+   */
+  rmw_ret_t get_status(DDS_StatusMask mask, void * event) override;
+  /// Return the topic reader entity for this subsciber
+  /**
+   * @return the topic reader associated with this subscriber
+   */
+  DDSEntity * get_entity() override;
 };
 }  // extern "C"
 
