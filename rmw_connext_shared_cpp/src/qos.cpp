@@ -21,7 +21,7 @@ namespace
 bool
 is_time_default(const rmw_time_t & time)
 {
-  return time.sec != 0 && time.nsec != 0;
+  return time.sec == 0 && time.nsec == 0;
 }
 
 DDS_Duration_t
