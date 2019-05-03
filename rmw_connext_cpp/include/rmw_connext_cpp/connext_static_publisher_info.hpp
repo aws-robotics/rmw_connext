@@ -33,7 +33,7 @@ class ConnextPublisherListener;
 
 extern "C"
 {
-struct ConnextStaticPublisherInfo : ConnextCustomEventInfo
+struct ConnextStaticPublisherInfo final : ConnextCustomEventInfo
 {
   DDS::Publisher * dds_publisher_;
   ConnextPublisherListener * listener_;
