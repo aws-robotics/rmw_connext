@@ -15,9 +15,6 @@
 #ifndef RMW_CONNEXT_SHARED_CPP__CONNEXT_STATIC_EVENT_INFO_HPP_
 #define RMW_CONNEXT_SHARED_CPP__CONNEXT_STATIC_EVENT_INFO_HPP_
 
-#include "ndds/ndds_cpp.h"
-#include "ndds/ndds_namespace_cpp.h"
-
 #include "rmw/ret_types.h"
 
 #include "rmw_connext_shared_cpp/ndds_include.hpp"
