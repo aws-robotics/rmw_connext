@@ -32,7 +32,7 @@ class ConnextSubscriberListener;
 
 extern "C"
 {
-struct ConnextStaticSubscriberInfo final : ConnextCustomEventInfo
+struct ConnextStaticSubscriberInfo : ConnextCustomEventInfo
 {
   DDS::Subscriber * dds_subscriber_;
   ConnextSubscriberListener * listener_;

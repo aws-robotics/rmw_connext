@@ -24,6 +24,8 @@
 
 typedef struct ConnextCustomEventInfo
 {
+  virtual ~ConnextCustomEventInfo() = default;
+
   /// Get the corresponding rmw status given the status mask.
   /**
    * Return the corresponding RMW status given the input DDS_StatusMask and its corresponding event.
